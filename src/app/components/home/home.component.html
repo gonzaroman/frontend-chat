@@ -1,1 +1,16 @@
-<p>home works!</p>
+<h2>🏠 Bienvenido</h2>
+
+<h3>Salas disponibles:</h3>
+
+<ul>
+  @for (sala of salas; track sala.id) {
+    <li (click)="entrarSala(sala.id)" style="cursor: pointer; color: blue;">
+      {{ sala.nombre }}
+    </li>
+  }
+</ul>
+
+<br>
+
+<button (click)="crearSala()">➕ Crear Nueva Sala</button>
+
