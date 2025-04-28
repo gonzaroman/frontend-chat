@@ -1,1 +1,56 @@
-<p>chat-sala works!</p>
+<!--
+<h2>💬 Sala: {{ idSala }}</h2>
+
+<ul id="mensajes" style="list-style:none; padding:0; max-height:400px; overflow-y:auto;">
+  @for (mensaje of mensajes; track mensaje) {
+    <li style="margin:0.5em 0;">
+      <strong>{{ mensaje.usuario }}:</strong> {{ mensaje.texto }}
+      <small style="color:#888; font-size:0.8em;">
+        {{ mensaje.fecha  }}
+      </small>
+    </li>
+  }
+</ul>
+
+<form (ngSubmit)="enviarMensaje()" style="display:flex; gap:0.5em; margin-top:1em;">
+  <input
+    type="text"
+    [(ngModel)]="nuevoMensaje"
+    name="mensaje"
+    placeholder="Escribe tu mensaje..."
+    style="flex:1; padding:0.5em;"
+    required
+  />
+  <button type="submit" style="padding:0.5em 1em;">Enviar</button>
+</form>
+-->
+
+<h2>💬 Sala: {{ idSala }}</h2>
+
+<ul id="mensajes">
+  @for (mensaje of mensajes; track mensaje) {
+    @if (mensaje.usuario === usuarioActual) {
+      <li class="mensaje-propio">
+        {{ mensaje.texto }}
+        <div class="hora">{{ mensaje.fecha | date:'dd/MM/yyyy' }}</div>
+      </li>
+    } @else {
+      <li class="mensaje-otro">
+        <strong>{{ mensaje.usuario }}:</strong>
+        {{ mensaje.texto }}
+        <div class="hora">{{ mensaje.fecha | date:'dd/MM/yyyy'}}</div>
+      </li>
+    }
+  }
+</ul>
+
+<form (ngSubmit)="enviarMensaje()">
+  <input
+    type="text"
+    [(ngModel)]="nuevoMensaje"
+    name="mensaje"
+    placeholder="Escribe tu mensaje..."
+    required
+  />
+  <button type="submit">Enviar</button>
+</form>
