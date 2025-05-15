@@ -30,9 +30,16 @@
   <button type="submit">Enviar</button>
 </form>
 
-<h3>Usuarios en la sala</h3>
+<h3>Usuarios en esta sala</h3>
 <ul>
   @for (u of usuariosConectados; track u) {
-    <li>{{ u }}</li>
+    <li>
+      <a 
+        [routerLink]="['/privado', generarIdPrivado(usuarioActual, u)]"
+        class="usuario-link"
+      >
+      {{ u }}
+    </a>
+    </li>
   }
 </ul>

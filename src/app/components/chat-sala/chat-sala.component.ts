@@ -1,13 +1,13 @@
 import { Component, OnInit, inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SocketService } from '../../services/socket.service';
 
 @Component({
   selector: 'app-chat-sala',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, RouterModule],
   templateUrl: './chat-sala.component.html',
   styleUrls: ['./chat-sala.component.css']
 })
@@ -63,6 +63,11 @@ export class ChatSalaComponent implements OnInit {
         .subscribe(m => this.mensajes.push(m));
     });
   }
+
+  generarIdPrivado(a: string, b: string): string {
+  return [a, b].sort().join('-');
+}
+
 
   enviarMensaje() {
     const texto = this.nuevoMensaje.trim();
