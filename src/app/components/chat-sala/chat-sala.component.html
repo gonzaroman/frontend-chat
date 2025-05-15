@@ -1,19 +1,18 @@
-
-
+<!-- chat-sala.component.html -->
 <h2>💬 Sala: {{ idSala }}</h2>
 
 <ul id="mensajes">
-  @for (mensaje of mensajes; track mensaje) {
-    @if (mensaje.usuario === usuarioActual) {
+  @for (msg of mensajes; track msg) {
+    @if (msg.usuario === usuarioActual) {
       <li class="mensaje-propio">
-        {{ mensaje.texto }}
-        <div class="hora">{{ mensaje.fecha | date:'dd/MM/yyyy' }}</div>
+        {{ msg.texto }}
+        <div class="hora">{{ msg.fecha | date:'HH:mm' }}</div>
       </li>
     } @else {
       <li class="mensaje-otro">
-        <strong>{{ mensaje.usuario }}:</strong>
-        {{ mensaje.texto }}
-        <div class="hora">{{ mensaje.fecha | date:'dd/MM/yyyy'}}</div>
+        <strong>{{ msg.usuario }}:</strong>
+        {{ msg.texto }}
+        <div class="hora">{{ msg.fecha | date:'HH:mm' }}</div>
       </li>
     }
   }
@@ -34,12 +33,9 @@
 <ul>
   @for (u of usuariosConectados; track u) {
     <li>
-      <a 
-        [routerLink]="['/privado', generarIdPrivado(usuarioActual, u)]"
-        class="usuario-link"
-      >
-      {{ u }}
-    </a>
+      <a [routerLink]="['/privado', generarIdPrivado(usuarioActual, u)]">
+        {{ u }}
+      </a>
     </li>
   }
 </ul>
