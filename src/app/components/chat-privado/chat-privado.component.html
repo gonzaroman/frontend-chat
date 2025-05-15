@@ -1,9 +1,13 @@
+<!-- chat-privado.component.html -->
 <h2>🔐 Chat privado con {{ destino }}</h2>
 
 <div id="mensajes" class="chat-box">
-  @for ( msg of mensajes; track msg) {
-    <div [class.mensaje-propio]="msg.de === 'Tú'" [class.mensaje-otro]="msg.de !== 'Tú'">
-      @if (msg.de !== 'Tú') {
+  @for (msg of mensajes; track msg) {
+    <div
+      [class.mensaje-propio]="msg.de === usuarioActual"
+      [class.mensaje-otro]="msg.de !== usuarioActual"
+    >
+      @if (msg.de !== usuarioActual) {
         <strong>{{ msg.de }}:</strong>
       }
       {{ msg.texto }}
