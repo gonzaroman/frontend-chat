@@ -1,7 +1,7 @@
 <!-- chat-privado.component.html -->
 <h2>🔐 Chat privado con {{ destino }}</h2>
 
-<div id="mensajes" class="chat-box">
+<div #scrollPrivado id="mensajes" class="chat-box">
   @for (msg of mensajes; track msg) {
     <div
       [class.mensaje-propio]="msg.de === usuarioActual"
@@ -9,7 +9,10 @@
     >
       @if (msg.de !== usuarioActual) {
         <strong>{{ msg.de }}:</strong>
-      }
+      } @else {
+    <strong>Tú:</strong>
+  }
+
       {{ msg.texto }}
       <div class="hora">{{ msg.fecha | date:'HH:mm' }}</div>
     </div>

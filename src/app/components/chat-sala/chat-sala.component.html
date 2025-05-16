@@ -1,10 +1,14 @@
-<!-- chat-sala.component.html -->
+<!-- src/app/components/chat-sala/chat-sala.component.html -->
 <h2>💬 Sala: {{ idSala }}</h2>
 
-<ul id="mensajes">
+<ul
+  #scrollContainer
+  id="mensajes"
+>
   @for (msg of mensajes; track msg) {
     @if (msg.usuario === usuarioActual) {
       <li class="mensaje-propio">
+        <strong>Tú:</strong>
         {{ msg.texto }}
         <div class="hora">{{ msg.fecha | date:'HH:mm' }}</div>
       </li>
@@ -31,7 +35,7 @@
 
 <h3>Usuarios en esta sala</h3>
 <ul>
-  @for (u of usuariosConectados; track u) {
+  @for ( u of usuariosConectados; track u) {
     <li>
       <a [routerLink]="['/privado', generarIdPrivado(usuarioActual, u)]">
         {{ u }}

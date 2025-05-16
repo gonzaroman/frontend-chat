@@ -1,5 +1,5 @@
-// chat-privado.component.ts
-import { Component, OnInit, inject, PLATFORM_ID } from '@angular/core';
+// src/app/components/chat-privado/chat-privado.component.ts
+import { Component, OnInit, AfterViewChecked, ElementRef, ViewChild, inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
@@ -12,7 +12,9 @@ import { SocketService } from '../../services/socket.service';
   templateUrl: './chat-privado.component.html',
   styleUrls: ['./chat-privado.component.css']
 })
-export class ChatPrivadoComponent implements OnInit {
+export class ChatPrivadoComponent implements OnInit, AfterViewChecked {
+  @ViewChild('scrollPrivado', { static: false }) private scrollPrivado!: ElementRef<HTMLElement>;
+
   idPrivado = '';
   destino = '';
   usuarioActual = '';
@@ -23,70 +25,78 @@ export class ChatPrivadoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private socketService: SocketService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    // 1) Leer usuario actual desde localStorage
+    // Sólo leer localStorage en navegador
     if (isPlatformBrowser(this.platformId)) {
-      this.usuarioActual = (localStorage.getItem('usuario') || '').trim();
+      this.usuarioActual = localStorage.getItem('usuario') || '';
     }
 
-    // 2) Subscribir al parámetro de ruta
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (!id) return;
       this.idPrivado = id;
-
-      // 3) Determinar el otro participante
       const [a, b] = this.idPrivado.split('-');
       this.destino = a === this.usuarioActual ? b : a;
 
-      // 4) Avisar al servidor de nuestro nombre
+      // Avisamos quién somos y nos unimos
       this.socketService.emit('usuario conectado', this.usuarioActual);
-
-      // 5) Unirse a la sala privada
       this.socketService.emit('unirse a sala privada', this.idPrivado);
 
-      // 6) Cargar historial privado y normalizar usuario
+      // Historial
       this.socketService.on<any[]>('mensajes anteriores privados')
         .subscribe(list => {
           this.mensajes = list.map(m => ({
-            de: String(m.usuario).trim(),
+            de: m.usuario,
             texto: m.texto,
-            fecha: new Date(m.fecha)
+            fecha: m.fecha ? new Date(m.fecha) : new Date()
           }));
         });
 
-      // 7) Escuchar nuevos mensajes privados
-      this.socketService.on<{ de: string; texto: string; fecha?: any }>('mensaje privado')
+      // Nuevos mensajes (evitamos eco)
+      this.socketService
+        .on<{ de: string; texto: string; fecha?: any }>('mensaje privado')
         .subscribe(m => {
-          this.mensajes.push({
-            de: String(m.de).trim(),
-            texto: m.texto,
-            fecha: m.fecha ? new Date(m.fecha) : new Date()
-          });
+          if (m.de.trim() !== this.usuarioActual) {
+            this.mensajes.push({
+              de: m.de.trim(),
+              texto: m.texto,
+              fecha: m.fecha ? new Date(m.fecha) : new Date()
+            });
+          }
         });
     });
   }
 
-  /**  
-   * Construye el ID de sala privado en orden único  
-   */
-  generarIdPrivado(a: string, b: string): string {
-    return [a, b].sort().join('-');
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  private scrollToBottom(): void {
+    try {
+      const el = this.scrollPrivado.nativeElement;
+      el.scrollTop = el.scrollHeight;
+    } catch {}
   }
 
   enviar() {
     const texto = this.nuevoTexto.trim();
     if (!texto) return;
 
-    // 8) Construir y enviar sin push local
+    // Emitimos y luego mostramos localmente
     this.socketService.emit('mensaje privado', {
       sala: this.idPrivado,
       de: this.usuarioActual,
       para: this.destino,
       texto
     });
+
+    this.mensajes.push({
+  de: this.usuarioActual,
+  texto,
+  fecha: new Date()
+});
 
     this.nuevoTexto = '';
   }
