@@ -1,0 +1,19 @@
+.salas-list {
+  list-style: none;
+  padding: 0;
+}
+.salas-list li {
+  margin: 0.5em 0;
+}
+.btn-primario {
+  margin-bottom: 1em;
+  padding: 0.5em 1em;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-primario:hover {
+  background: #45a049;
+}

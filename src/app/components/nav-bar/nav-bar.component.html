@@ -6,7 +6,7 @@
 
   <ul class="links">
     <li><a routerLink="/">Inicio</a></li>
-    <li><a routerLink="/">Salas</a></li>
+    <li><a routerLink="/salas">Salas</a></li>
     <li><a routerLink="/crear-sala">Crear Sala</a></li>
   </ul>
 
@@ -26,7 +26,7 @@
   <button class="hamburger">☰</button>
   <ul class="mobile-links">
     <li><a routerLink="/">Inicio</a></li>
-    <li><a routerLink="/">Salas</a></li>
+    <li><a routerLink="/salas">Salas</a></li>
     <li><a routerLink="/crear-sala">Crear Sala</a></li>
     @if (usuario) {
       <li><button (click)="logout()">Cerrar sesión</button></li>

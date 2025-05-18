@@ -1,0 +1,16 @@
+<h2>🔖 Salas disponibles</h2>
+
+<button routerLink="/crear-sala" class="btn-primario">
+  ➕ Crear nueva sala
+</button>
+
+<ul class="salas-list">
+  @for (s of salas; track s.id) {
+    <li>
+      <a [routerLink]="['/sala', s.id]">
+        {{ s.nombre }} 
+        <small>(creada por {{ s.creador }})</small>
+      </a>
+    </li>
+  }
+</ul>
