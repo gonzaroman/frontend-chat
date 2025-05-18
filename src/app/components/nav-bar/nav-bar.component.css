@@ -1,0 +1,67 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+  background: #4caf50;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo a {
+  color: white;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  list-style: none;
+  gap: 1em;
+}
+
+.links a {
+  color: white;
+  text-decoration: none;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.user-menu button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .links, .user-menu { display: none; }
+  .hamburger { display: block; }
+
+  .mobile-links {
+    position: absolute;
+    top: 3em;
+    right: 1em;
+    background: white;
+    color: black;
+    list-style: none;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+  }
+  .mobile-links li { margin: 0.5em 0; }
+}

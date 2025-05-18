@@ -1,0 +1,38 @@
+<!-- src/app/components/nav-bar/nav-bar.component.html -->
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/">💬 MyChatApp</a>
+  </div>
+
+  <ul class="links">
+    <li><a routerLink="/">Inicio</a></li>
+    <li><a routerLink="/">Salas</a></li>
+    <li><a routerLink="/crear-sala">Crear Sala</a></li>
+  </ul>
+
+  @if (usuario) {
+    <div class="user-menu">
+      <span>Hola, {{ usuario }}</span>
+      <button (click)="logout()">Cerrar sesión</button>
+    </div>
+  } @else {
+    <div class="user-menu">
+      <a routerLink="/login">Login</a> |
+      <a routerLink="/registro">Registro</a>
+    </div>
+  }
+
+  <!-- Enlaces móviles -->
+  <button class="hamburger">☰</button>
+  <ul class="mobile-links">
+    <li><a routerLink="/">Inicio</a></li>
+    <li><a routerLink="/">Salas</a></li>
+    <li><a routerLink="/crear-sala">Crear Sala</a></li>
+    @if (usuario) {
+      <li><button (click)="logout()">Cerrar sesión</button></li>
+    } @else {
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/registro">Registro</a></li>
+    }
+  </ul>
+</nav>
