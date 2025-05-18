@@ -1,0 +1,11 @@
+<h2>🔐 Chats privados</h2>
+
+<ul class="privados-list">
+  @for (c of conversaciones; track c.id) {
+    <li>
+      <a [routerLink]="['/privado', c.id]">
+        Conversación con <strong>{{ c.con }}</strong>
+      </a>
+    </li>
+  }
+</ul>

@@ -1,0 +1,14 @@
+.privados-list {
+  list-style: none;
+  padding: 0;
+}
+.privados-list li {
+  margin: 0.5em 0;
+}
+.privados-list a {
+  text-decoration: none;
+  color: #333;
+}
+.privados-list a:hover {
+  text-decoration: underline;
+}
