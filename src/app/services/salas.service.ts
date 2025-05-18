@@ -14,7 +14,17 @@ export class SalaService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
+  // Obtener sólo las salas del usuario
+obtenerMisSalas(usuario: string): Observable<any[]> {
+  return this.http.get<any[]>(`${this.apiUrl}/propias?creador=${encodeURIComponent(usuario)}`);
+}
+
   crearSala(nombre: string, creador: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { nombre, creador });
+  }
+
+  /** Elimina una sala por su ID */
+  eliminarSala(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

@@ -8,6 +8,7 @@
     <li><a routerLink="/">Inicio</a></li>
     <li><a routerLink="/salas">Salas</a></li>
     <li><a routerLink="/crear-sala">Crear Sala</a></li>
+    <li><a routerLink="/mis-salas">Tus salas</a></li>
     <li><a routerLink="/privados">Privados</a></li>
   </ul>
 
@@ -29,6 +30,7 @@
     <li><a routerLink="/">Inicio</a></li>
     <li><a routerLink="/salas">Salas</a></li>
     <li><a routerLink="/crear-sala">Crear Sala</a></li>
+    <li><a routerLink="/mis-salas">Tus salas</a></li>
     @if (usuario) {
       <li><button (click)="logout()">Cerrar sesión</button></li>
     } @else {

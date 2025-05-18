@@ -1,0 +1,19 @@
+<h2>🗂️ Tus salas</h2>
+
+@if (cargando) {
+  <p>Cargando…</p>
+} @else {
+  @if (salas.length === 0) {
+    <p>No has creado ninguna sala.</p>
+  } @else {
+    <ul>
+      @for ( sala of salas; track sala.id) {
+        <li>
+          <a [routerLink]="['/sala', sala.id]">{{ sala.nombre }}</a>
+          <button (click)="eliminar(sala.id)">🗑️</button>
+        </li>
+      }
+    </ul>
+  }
+}
+
