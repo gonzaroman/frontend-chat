@@ -10,6 +10,7 @@ import { ChatPrivadoComponent } from './components/chat-privado/chat-privado.com
 import { SalasListComponent } from './components/salas-list/salas-list.component';
 import { PrivadosListComponent } from './components/privados-list/privados-list.component';
 import { MisSalasComponent } from './components/mis-salas/mis-salas.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent,canActivate: [authGuard] },
@@ -21,5 +22,6 @@ export const routes: Routes = [
   { path: 'mis-salas', component: MisSalasComponent, canActivate: [authGuard] },
    { path: 'privados', component: PrivadosListComponent, canActivate: [authGuard] },
   { path: 'privado/:id', component: ChatPrivadoComponent },
+  { path: 'usuarios', component: UsuariosComponent },
   { path: '**', redirectTo: '' } // Cualquier otra ruta ➔ home
 ];

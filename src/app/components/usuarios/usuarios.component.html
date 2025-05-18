@@ -1,0 +1,21 @@
+<!-- src/app/components/usuarios/usuarios.component.html -->
+<h2>👥 Usuarios registrados</h2>
+
+@if (cargando) {
+  <p>Cargando…</p>
+} @else if (!cargando && usuarios.length) {
+  <ul>
+    @for (u of usuarios; track u.nombre) {
+      <li>
+        {{ u.nombre }}
+        @if (onlineNombres.includes(u.nombre)) {
+          <span class="online">● conectado</span>
+        } @else {
+          <span class="offline">○ desconectado</span>
+        }
+      </li>
+    }
+  </ul>
+} @else {
+  <p>No hay usuarios</p>
+}

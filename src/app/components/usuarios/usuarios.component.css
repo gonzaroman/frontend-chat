@@ -1,0 +1,3 @@
+/* src/app/components/usuarios/usuarios.component.css */
+.online { color: green; margin-left: 0.5em }
+.offline { color: gray; margin-left: 0.5em }
