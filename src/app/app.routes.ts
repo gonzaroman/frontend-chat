@@ -16,12 +16,12 @@ export const routes: Routes = [
   { path: '', component: HomeComponent,canActivate: [authGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'crear-sala', component: CrearSalaComponent },
+  { path: 'crear-sala', component: CrearSalaComponent, canActivate: [authGuard]  },
    { path: 'salas', component: SalasListComponent, canActivate: [authGuard] },
-  { path: 'sala/:id', component: ChatSalaComponent },
+  { path: 'sala/:id', component: ChatSalaComponent , canActivate: [authGuard] },
   { path: 'mis-salas', component: MisSalasComponent, canActivate: [authGuard] },
    { path: 'privados', component: PrivadosListComponent, canActivate: [authGuard] },
-  { path: 'privado/:id', component: ChatPrivadoComponent },
-  { path: 'usuarios', component: UsuariosComponent },
+  { path: 'privado/:id', component: ChatPrivadoComponent, canActivate: [authGuard]  },
+  { path: 'usuarios', component: UsuariosComponent, canActivate: [authGuard]  },
   { path: '**', redirectTo: '' } // Cualquier otra ruta ➔ home
 ];
