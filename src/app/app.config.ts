@@ -1,5 +1,5 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withHashLocation } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http'; // 👈 Importar HttpClient
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideSocketIo } from 'ngx-socket-io';

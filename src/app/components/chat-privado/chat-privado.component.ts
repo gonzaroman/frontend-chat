@@ -30,6 +30,7 @@ export class ChatPrivadoComponent implements OnInit, AfterViewChecked {
 
   ngOnInit() {
     // Sólo leer localStorage en navegador
+    this.socketService.initSocket()
     if (isPlatformBrowser(this.platformId)) {
       this.usuarioActual = localStorage.getItem('usuario') || '';
     }

@@ -7,7 +7,7 @@
   <ul>
     @for ( u of usuarios; track u.nombre) {
       <li>
-        <!-- Enlace al chat privado -->
+       
         <a
           [routerLink]="['/privado', generarIdPrivado(usuarioActual, u.nombre)]"
           class="usuario-link"

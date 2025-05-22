@@ -23,6 +23,7 @@ export class UsuariosComponent implements OnInit {
   private platformId  = inject(PLATFORM_ID);
 
   ngOnInit() {
+    this.socketSvc.initSocket()
     // 1) Leer tu usuario una sola vez
     if (isPlatformBrowser(this.platformId)) {
       this.usuarioActual = localStorage.getItem('usuario')?.trim() || '';
@@ -48,5 +49,9 @@ export class UsuariosComponent implements OnInit {
   /** Ordena alfabéticamente y une con guión para generar el ID único */
   generarIdPrivado(a: string, b: string): string {
     return [a, b].sort().join('-');
-  }
+  
+   }
 }
+
+
+

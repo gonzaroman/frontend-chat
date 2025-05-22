@@ -12,10 +12,17 @@ import { PrivadosListComponent } from './components/privados-list/privados-list.
 import { MisSalasComponent } from './components/mis-salas/mis-salas.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent,canActivate: [authGuard] },
-   { path: 'prueba', component: HomepageComponent   },
+ { path: '', component: HomeComponent},
+  { path: 'inicio', loadComponent: () => import('./pages/homepage/homepage.component').then(
+      m => m.HomepageComponent,
+     ),},
+ // { path: '', redirectTo: 'prueba', pathMatch: 'full'},
+ // { path: ' ', component: HomepageComponent   },
+  
+  
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'crear-sala', component: CrearSalaComponent, canActivate: [authGuard]  },
@@ -28,3 +35,4 @@ export const routes: Routes = [
   
   { path: '**', redirectTo: '' } // Cualquier otra ruta ➔ home
 ];
+ 

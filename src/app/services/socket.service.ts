@@ -7,10 +7,16 @@ import { isPlatformBrowser } from '@angular/common';
   providedIn: 'root'
 })
 export class SocketService {
-  private socket: Socket;
+  private socket: Socket |null= null;
   private platformId = inject(PLATFORM_ID);
 
   constructor() {
+    
+  }
+
+  initSocket(){
+
+    if(!this.socket){
     this.socket = io('http://localhost:3000'); // Ajusta si tu backend corre en otra URL/puerto
 
     if (isPlatformBrowser(this.platformId)) {
@@ -19,19 +25,20 @@ export class SocketService {
         this.socket.emit('usuario conectado', usuario);
       }
     }
+    }
   }
 
   emit(evento: string, data?: any) {
-    this.socket.emit(evento, data);
+    this.socket?.emit(evento, data);
   }
 
   on<T>(evento: string): Observable<T> {
     return new Observable<T>(observer => {
-      this.socket.on(evento, (payload: T) => {
+      this.socket?.on(evento, (payload: T) => {
         observer.next(payload);
       });
       // opcional: limpiar listeners al completar
-      return () => this.socket.off(evento);
+      return () => this.socket?.off(evento);
     });
   }
 }

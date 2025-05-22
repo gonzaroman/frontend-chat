@@ -28,6 +28,7 @@ export class ChatSalaComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit() {
+    this.socketService.initSocket()
     if (isPlatformBrowser(this.platformId)) {
       this.usuarioActual = (localStorage.getItem('usuario') || '').trim();
     }

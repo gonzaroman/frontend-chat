@@ -17,6 +17,7 @@ export class PrivadosListComponent implements OnInit {
   private svc = inject(PrivadoService);
 
   ngOnInit() {
+    
     if (isPlatformBrowser(this.platformId)) {
       this.usuarioActual = localStorage.getItem('usuario') || '';
       this.svc.obtenerConversaciones(this.usuarioActual)
