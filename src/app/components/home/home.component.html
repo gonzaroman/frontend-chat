@@ -1,16 +1,10 @@
-<h2>🏠 Bienvenido</h2>
-
-<h3>Salas disponibles:</h3>
-
-<ul>
-  @for (sala of salas; track sala.id) {
-    <li (click)="entrarSala(sala.id)" style="cursor: pointer; color: blue;">
-      {{ sala.nombre }}
-    </li>
-  }
-</ul>
-
-<br>
-
-<button (click)="crearSala()">➕ Crear Nueva Sala</button>
-
+<div class="welcome-container">
+  <div class="welcome-card">
+    <h1>👋 ¡Bienvenido a Gonza Chat!</h1>
+    <p>Tu espacio para conectar con amigos y compañeros en tiempo real.</p>
+    <div class="buttons">
+      
+      <a  class="btn-primary"  routerLink="/inicio">Entrar</a>
+    </div>
+  </div>
+</div>

@@ -14,8 +14,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent,canActivate: [authGuard] },
-   { path: 'prueba', component: HomepageComponent   },
+  { path: '', component: HomeComponent},
+   { path: 'inicio', component: HomepageComponent   },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'crear-sala', component: CrearSalaComponent, canActivate: [authGuard]  },

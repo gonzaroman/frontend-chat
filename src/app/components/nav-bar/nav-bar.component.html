@@ -1,17 +1,17 @@
 <!-- src/app/components/nav-bar/nav-bar.component.html -->
 <nav class="navbar">
   <div class="logo">
-    <a routerLink="/">💬 Gonza Chat</a>
+    <a routerLink="/inicio">💬 Gonza Chat</a>
   </div>
 
   <ul class="links">
-    <li><a routerLink="/">Inicio</a></li>
+    <li><a routerLink="/inicio">Inicio</a></li>
     <li><a routerLink="/salas">Salas</a></li>
     <li><a routerLink="/crear-sala">Crear Sala</a></li>
     <li><a routerLink="/mis-salas">Tus salas</a></li>
     <li><a routerLink="/privados">Privados</a></li>
     <li><a routerLink="/usuarios">Usuarios</a></li>
-      <li><a routerLink="/prueba">prueba</a></li>
+     
   </ul>
 
   @if (usuario) {
@@ -29,7 +29,7 @@
   <!-- Enlaces móviles -->
   <button class="hamburger" (click)="toggleMobileMenu()">☰</button>
   <ul (click)="toggleMobileMenu()" class="mobile-links" [class.open]="mobileMenuOpen">
-    <li ><a routerLink="/">Inicio</a></li>
+    <li ><a routerLink="/inicio">Inicio</a></li>
     <li><a routerLink="/salas">Salas</a></li>
     <li><a routerLink="/crear-sala">Crear Sala</a></li>
     <li><a routerLink="/mis-salas">Tus salas</a></li>
