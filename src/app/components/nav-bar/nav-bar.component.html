@@ -28,8 +28,8 @@
 
   <!-- Enlaces móviles -->
   <button class="hamburger" (click)="toggleMobileMenu()">☰</button>
-  <ul class="mobile-links" [class.open]="mobileMenuOpen">
-    <li><a routerLink="/">Inicio</a></li>
+  <ul (click)="toggleMobileMenu()" class="mobile-links" [class.open]="mobileMenuOpen">
+    <li ><a routerLink="/">Inicio</a></li>
     <li><a routerLink="/salas">Salas</a></li>
     <li><a routerLink="/crear-sala">Crear Sala</a></li>
     <li><a routerLink="/mis-salas">Tus salas</a></li>

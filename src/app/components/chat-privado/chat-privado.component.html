@@ -1,4 +1,4 @@
-<!-- chat-privado.component.html -->
+<!-- chat-privado.component.html 
 <h2>🔐 Chat privado con {{ destino }}</h2>
 
 <div #scrollPrivado id="mensajes" class="chat-box">
@@ -28,6 +28,47 @@
     required
   />
   <button type="submit">Enviar</button>
-</form>
+</form>-->
 
-<app-privados-list></app-privados-list>
+
+
+<div class="chat-privado-container">
+  <!-- Panel izquierdo: listamos los chats privados -->
+  <aside class="privados-panel">
+    <app-privados-list></app-privados-list>
+  </aside>
+
+  <!-- Panel derecho: la conversación privada -->
+  <section class="chat-privado-panel">
+    <h2>🔐 Chat privado con {{ destino }}</h2>
+
+    <div #scrollPrivado id="mensajes" class="mensajes-list">
+      @for (msg of mensajes; track msg) {
+        <div
+          class="burbuja"
+          [class.propio]="msg.de === usuarioActual"
+          [class.otro]="msg.de !== usuarioActual"
+        >
+          <span class="texto">
+            <strong>{{ msg.de === usuarioActual ? 'Tú' : msg.de }}:</strong>
+            {{ msg.texto }}
+          </span>
+          <span class="hora">{{ msg.fecha | date:'HH:mm' }}</span>
+        </div>
+      }
+    </div>
+
+    <form (ngSubmit)="enviar()" class="input-panel">
+      <input
+        type="text"
+        [(ngModel)]="nuevoTexto"
+        name="mensaje"
+        class="input-mensaje"
+        placeholder="Escribe un mensaje..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+  </section>
+</div>

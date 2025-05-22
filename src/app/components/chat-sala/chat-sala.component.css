@@ -1,28 +1,35 @@
-/* Asegura que el body y el root ocupen toda la ventana */
+/* ===========================
+   GLOBAL RESET & ROOT SETUP
+   =========================== */
 html, body, app-root {
   height: 100%;
   margin: 0;
 }
 
-/* Contenedor principal: ahora ocupa 100vh menos la altura del navbar (ajusta si es distinto) */
+/* ===========================
+   CHAT SALA STYLES
+   =========================== */
+
+/* Contenedor general */
 .chat-sala-container {
   display: flex;
   gap: 1rem;
   padding: 1rem;
   box-sizing: border-box;
-  height: calc(100vh - 3.5rem);
+  height: calc(100vh - 3.5rem); /* Ajusta si tu nav varía */
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
-/* Panel de usuarios (lado izquierdo) */
+/* Panel de usuarios */
 .usuarios-panel {
   flex: 0 0 200px;
   background: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   padding: 1rem;
-  box-sizing: border-box;
+      box-sizing: border-box;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow-y: auto;
 }
 .usuarios-panel h3 {
   font-size: 1.25rem;
@@ -51,7 +58,7 @@ html, body, app-root {
   text-decoration: underline;
 }
 
-/* Panel de chat: dividimos en tres filas (header, mensajes, input) */
+/* Panel de chat */
 .chat-panel {
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -62,8 +69,6 @@ html, body, app-root {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
-
-/* Header */
 .chat-panel > h2 {
   margin: 0;
   padding: 1rem;
@@ -73,19 +78,17 @@ html, body, app-root {
   color: #333333;
 }
 
-/* Lista de mensajes: ocupa la fila intermedia y hace scroll interno */
+/* Lista de mensajes con scroll interno */
 .mensajes-list {
   grid-row: 2;
-  list-style: none;
-  margin: 0;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
   overflow-y: auto;
 }
-
-/* Scrollbar personalizado (opcional) */
 .mensajes-list::-webkit-scrollbar {
   width: 8px;
 }
@@ -119,14 +122,16 @@ html, body, app-root {
 }
 .burbuja.propio {
   background: #dcf8c6;
+  align-self: flex-end;
   border-bottom-right-radius: 2px;
 }
 .burbuja.otro {
   background: #f0f0f0;
+  align-self: flex-start;
   border-bottom-left-radius: 2px;
 }
 
-/* Input panel: fila inferior */
+/* Input panel */
 .input-panel {
   grid-row: 3;
   display: flex;
@@ -162,37 +167,21 @@ html, body, app-root {
   transform: translateY(-1px);
 }
 
-/* Responsive: apila vertical en móvil */
+/* ===========================
+   MOBILE RESPONSIVE
+   =========================== */
 @media (max-width: 768px) {
   .chat-sala-container {
     flex-direction: column;
-   /* height: auto; /* permite crecer */
+    height: calc(100vh - 3.5rem);
+    max-height: 600px;
   }
   .usuarios-panel {
+    order: 2;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
   }
-}
-
-
-
-@media (max-width: 768px) {
-  .chat-sala-container {
-    flex-direction: column-reverse; /* usuarios debajo */
-  }
-}
-
-@media (max-width: 768px) {
-  .chat-sala-container {
-    flex-direction: column-reverse;  /* usuarios debajo */
-    /* damos altura al container restando la altura del nav */
-    margin-top: 230px;
-    height: calc(100vh - 200px);
-  }
-
-  .usuarios-panel {
-    width: 100%;
-    margin-bottom: 1rem;
-    box-sizing: border-box;
+  .chat-panel {
+    order: 1;
   }
 }
