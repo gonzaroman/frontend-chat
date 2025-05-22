@@ -11,9 +11,11 @@ import { SalasListComponent } from './components/salas-list/salas-list.component
 import { PrivadosListComponent } from './components/privados-list/privados-list.component';
 import { MisSalasComponent } from './components/mis-salas/mis-salas.component';
 import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent,canActivate: [authGuard] },
+   { path: 'prueba', component: HomepageComponent   },
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'crear-sala', component: CrearSalaComponent, canActivate: [authGuard]  },
@@ -23,5 +25,6 @@ export const routes: Routes = [
    { path: 'privados', component: PrivadosListComponent, canActivate: [authGuard] },
   { path: 'privado/:id', component: ChatPrivadoComponent, canActivate: [authGuard]  },
   { path: 'usuarios', component: UsuariosComponent, canActivate: [authGuard]  },
+  
   { path: '**', redirectTo: '' } // Cualquier otra ruta ➔ home
 ];

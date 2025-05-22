@@ -1,4 +1,4 @@
-.salas-list {
+/*.salas-list {
   list-style: none;
   padding: 0;
 }
@@ -16,4 +16,73 @@
 }
 .btn-primario:hover {
   background: #45a049;
+}
+*/
+:host {
+  display: block;
+  padding: 1rem;
+  background: #f5f7fa;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #2e7d32;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primario {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+  margin-bottom: 1rem;
+}
+.btn-primario:hover {
+  background-color: #388e3c;
+  transform: translateY(-2px);
+}
+
+.salas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.salas-list li {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.salas-list li:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.salas-list a {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+}
+.salas-list a small {
+  display: block;
+  font-size: 0.85rem;
+  color: #666666;
+  margin-top: 0.25rem;
 }

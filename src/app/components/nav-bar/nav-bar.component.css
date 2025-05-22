@@ -1,67 +1,133 @@
+/* Base navbar */
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5em 1em;
-  background: #4caf50;
-  color: white;
-  position: sticky;
-  top: 0;
+  background-color: #4caf50;
+  padding: 0.5rem 1rem;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  position: relative;
   z-index: 10;
 }
 
-.logo a {
-  color: white;
-  font-size: 1.2em;
+/* Logo */
+.navbar .logo a {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 700;
   text-decoration: none;
 }
 
-.links {
-  display: flex;
+/* Links desktop */
+.navbar .links {
   list-style: none;
-  gap: 1em;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
 }
-
-.links a {
-  color: white;
+.navbar .links li a {
+  color: #ffffff;
   text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+.navbar .links li a:hover {
+  opacity: 0.8;
 }
 
-.user-menu {
+/* User-menu desktop */
+.navbar .user-menu {
   display: flex;
   align-items: center;
-  gap: 0.5em;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-weight: 500;
 }
-
-.user-menu button {
+.navbar .user-menu button {
   background: transparent;
-  border: 1px solid white;
-  color: white;
-  padding: 0.2em 0.6em;
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 0.25rem 0.5rem;
   cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+.navbar .user-menu button:hover {
+  background: rgba(255,255,255,0.2);
+  opacity: 0.9;
 }
 
+/* Hamburger button (hidden desktop) */
 .hamburger {
   display: none;
   background: none;
   border: none;
-  font-size: 1.5em;
-  color: white;
+  font-size: 1.5rem;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 11;
 }
 
-@media (max-width: 600px) {
-  .links, .user-menu { display: none; }
-  .hamburger { display: block; }
+/* Mobile links (hidden by default) */
+.mobile-links {
+  display: none;
+  flex-direction: column;
+  background-color: #4caf50;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+}
+.mobile-links li {
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+.mobile-links li:last-child {
+  border-bottom: none;
+}
+.mobile-links li a,
+.mobile-links li button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: #ffffff;
+  background: none;
+  border: none;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.mobile-links li a:hover,
+.mobile-links li button:hover {
+  background: rgba(255,255,255,0.2);
+}
 
-  .mobile-links {
-    position: absolute;
-    top: 3em;
-    right: 1em;
-    background: white;
-    color: black;
-    list-style: none;
-    padding: 0.5em;
-    border: 1px solid #ccc;
+/* Show hamburger and hide desktop links in mobile */
+@media (max-width: 768px) {
+  .navbar .links,
+  .navbar .user-menu {
+    display: none;
   }
-  .mobile-links li { margin: 0.5em 0; }
+  .hamburger {
+    display: block;
+  }
+}
+@media (min-width: 769px) {
+  .mobile-links {
+    display: none !important;
+  }
+}
+/* When open, show the menu */
+.mobile-links.open {
+  display: flex;
 }

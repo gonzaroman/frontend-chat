@@ -19,12 +19,20 @@ export class NavBarComponent implements OnInit {
 
   usuario: string | null = null;
 
+  mobileMenuOpen = false;
+
 ngOnInit() {
     // Solo en navegador
     if (isPlatformBrowser(this.platformId)) {
       this.usuario = localStorage.getItem('usuario');
     }
   }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
+  }
+
+ 
  
 
   logout() {

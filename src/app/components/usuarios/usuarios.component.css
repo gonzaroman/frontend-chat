@@ -1,3 +1,79 @@
 /* src/app/components/usuarios/usuarios.component.css */
-.online { color: green; margin-left: 0.5em }
-.offline { color: gray; margin-left: 0.5em }
+/*.online { color: green; margin-left: 0.5em }
+.offline { color: gray; margin-left: 0.5em }*/
+
+:host {
+  display: block;
+  padding: 1rem;
+  background: #f5f7fa;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #2e7d32;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.2s ease-in-out;
+}
+ul li:last-child {
+  border-bottom: none;
+}
+ul li:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.usuario-link {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+.usuario-link:hover {
+  color: #4caf50;
+  text-decoration: underline;
+}
+
+.online, .offline {
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.online {
+  color: #388e3c;
+}
+.online::before {
+  content: '●';
+  display: inline-block;
+  font-size: 1rem;
+}
+.offline {
+  color: #666666;
+}
+.offline::before {
+  content: '○';
+  display: inline-block;
+  font-size: 1rem;
+}
+

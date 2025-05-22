@@ -1,0 +1,32 @@
+/* Contenedor principal */
+.prueba-layout {
+  display: flex;
+  gap: 1rem;              /* espacio entre columnas */
+  padding: 1rem;
+  box-sizing: border-box;
+  min-height: calc(100vh - 2rem); /* ocupa toda la altura menos padding */
+}
+
+/* Panels flexibles */
+.panel {
+  background: #f5f7fa;    /* mismo fondo suave */
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  overflow-y: auto;       /* scroll si desborda */
+}
+
+/* Puedes ajustar el ancho relativo */
+.salas-panel {
+  flex: 2;                /* ocupa el doble de espacio */
+}
+.usuarios-panel {
+  flex: 1;                /* ocupa la mitad que salas */
+}
+
+/* Responsive: en móviles apila vertical */
+@media (max-width: 768px) {
+  .prueba-layout {
+    flex-direction: column;
+  }
+}
