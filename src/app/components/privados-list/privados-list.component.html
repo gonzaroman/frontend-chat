@@ -1,11 +1,20 @@
-<h2>🔐 Chats privados</h2>
 
-<ul class="privados-list">
-  @for (c of conversaciones; track c.id) {
-    <li>
-      <a [routerLink]="['/privado', c.id]">
-        Conversación con <strong>{{ c.con }}</strong>
-      </a>
-    </li>
+
+
+<div class="privados">
+  <h2>🔐 Chats privados</h2>
+
+  @if (conversaciones.length === 0) {
+    <p>No tienes conversaciones privadas.</p>
+  } @else {
+    <ul class="privados-list">
+      @for (c of conversaciones; track c.id) {
+        <li class="privado-card">
+          <a [routerLink]="['/privado', c.id]">
+            Conversación con <strong>{{ c.con }}</strong>
+          </a>
+        </li>
+      }
+    </ul>
   }
-</ul>
+</div>

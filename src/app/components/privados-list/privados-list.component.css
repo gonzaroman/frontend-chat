@@ -1,14 +1,51 @@
+/* Contenedor general */
+.privados {
+  padding: 1rem;
+  background: #f5f7fa;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Título */
+.privados h2 {
+  font-size: 1.5rem;
+  color: #2e7d32;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Lista en grid */
 .privados-list {
   list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
   padding: 0;
+  margin: 0;
 }
-.privados-list li {
-  margin: 0.5em 0;
+
+/* Cada tarjeta de conversación */
+.privado-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
-.privados-list a {
+.privado-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+/* Enlace interior */
+.privado-card a {
+  color: #333333;
   text-decoration: none;
-  color: #333;
+  font-weight: 500;
+  display: block;
 }
-.privados-list a:hover {
+.privado-card a:hover {
+  color: #4caf50;
   text-decoration: underline;
 }

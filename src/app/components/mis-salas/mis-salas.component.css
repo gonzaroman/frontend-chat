@@ -1,0 +1,70 @@
+/* Contenedor general */
+.mis-salas {
+  padding: 1rem;
+  background: #f5f7fa;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Título */
+.mis-salas h2 {
+  font-size: 1.5rem;
+  color: #2e7d32;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Grid de tarjetas */
+.mis-salas-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilo de cada tarjeta de sala */
+.sala-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.sala-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Enlace de sala */
+.sala-card a {
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+  flex: 1;
+}
+.sala-card a:hover {
+  text-decoration: underline;
+}
+
+/* Botón de eliminar */
+.btn-eliminar {
+  background-color: #e53935;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-size: 1rem;
+  line-height: 1;
+}
+.btn-eliminar:hover {
+  background-color: #c62828;
+  transform: translateY(-1px);
+}

@@ -1,11 +1,24 @@
 <h2>Crear nueva sala</h2>
 
-<form (ngSubmit)="crear()">
-  <input type="text" [(ngModel)]="nombreSala" name="nombreSala" placeholder="Nombre de la sala" required />
-  <br><br>
-  <button type="submit">Crear sala</button>
-</form>
+<div class="crear-sala-container">
+  <h2>📬 Crear nueva sala</h2>
 
-@if (error) {
-  <p style="color: red;">{{ error }}</p>
-}
+  <form (ngSubmit)="crear()" class="crear-sala-form">
+    <input
+      type="text"
+      [(ngModel)]="nombreSala"
+      name="nombreSala"
+      class="input-text"
+      placeholder="Nombre de la sala"
+      required
+    />
+
+    <button type="submit" class="btn-primario">
+      Crear sala
+    </button>
+  </form>
+
+  @if (error) {
+    <p class="error-msg">{{ error }}</p>
+  }
+</div>
