@@ -1,5 +1,5 @@
 <!-- src/app/components/chat-sala/chat-sala.component.html -->
-<h2>💬 Sala: {{ idSala }}</h2>
+<!--<h2>💬 Sala: {{ idSala }}</h2>
 
 <ul
   #scrollContainer
@@ -42,4 +42,55 @@
       </a>
     </li>
   }
-</ul>
+</ul>-->
+<div class="chat-sala-container">
+  <aside class="usuarios-panel">
+    <h3>Usuarios en esta sala</h3>
+    <ul>
+      @for (u of usuariosConectados; track u) {
+        <li>
+          <a [routerLink]="['/privado', generarIdPrivado(usuarioActual, u)]">
+            {{ u }}
+          </a>
+        </li>
+      }
+    </ul>
+  </aside>
+
+  <section class="chat-panel">
+    <h2>💬 Sala: {{ idSala }}</h2>
+
+    <ul #scrollContainer id="mensajes" class="mensajes-list">
+      @for (msg of mensajes; track msg) {
+        @if (msg.usuario === usuarioActual) {
+          <li class="mensaje mensaje-propio">
+            <div class="burbuja propio">
+              <span class="texto"><strong>Tú:</strong> {{ msg.texto }}</span>
+              <span class="hora">{{ msg.fecha | date:'HH:mm' }}</span>
+            </div>
+          </li>
+        } @else {
+          <li class="mensaje mensaje-otro">
+            <div class="burbuja otro">
+              <span class="texto"><strong>{{ msg.usuario }}:</strong> {{ msg.texto }}</span>
+              <span class="hora">{{ msg.fecha | date:'HH:mm' }}</span>
+            </div>
+          </li>
+        }
+      }
+    </ul>
+
+    <form (ngSubmit)="enviarMensaje()" class="input-panel">
+      <input
+        type="text"
+        [(ngModel)]="nuevoMensaje"
+        name="mensaje"
+        class="input-mensaje"
+        placeholder="Escribe tu mensaje..."
+        autocomplete="off"
+        required
+      />
+      <button type="submit" class="btn-enviar">Enviar</button>
+    </form>
+  </section>
+</div>

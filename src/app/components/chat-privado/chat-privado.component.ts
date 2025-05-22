@@ -4,11 +4,12 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SocketService } from '../../services/socket.service';
+import { PrivadosListComponent } from "../privados-list/privados-list.component";
 
 @Component({
   selector: 'app-chat-privado',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, PrivadosListComponent],
   templateUrl: './chat-privado.component.html',
   styleUrls: ['./chat-privado.component.css']
 })
