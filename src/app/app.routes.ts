@@ -25,6 +25,7 @@ export const routes: Routes = [
    { path: 'privados', component: PrivadosListComponent, canActivate: [authGuard] },
   { path: 'privado/:id', component: ChatPrivadoComponent, canActivate: [authGuard]  },
   { path: 'usuarios', component: UsuariosComponent, canActivate: [authGuard]  },
+  { path: 'pagina', component: UsuariosComponent, canActivate: [authGuard]  },
   
   { path: '**', redirectTo: '' } // Cualquier otra ruta ➔ home
 ];
