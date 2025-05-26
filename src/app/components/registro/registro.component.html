@@ -1,4 +1,4 @@
-<h2>Registro</h2>
+<!--<h2>Registro</h2>
 
 
 <form (ngSubmit)="registrar()" #formulario="ngForm" >
@@ -13,5 +13,44 @@
 
 @if (error){
     <p style="color:red">{{ error }}</p>
-}
+}-->
+
+<div class="registro-page">
+  <div class="registro-card">
+    <h2>📝 Registro</h2>
+
+    <form (ngSubmit)="registrar()" #formulario="ngForm">
+      <input
+        type="text"
+        placeholder="Nombre de usuario"
+        [(ngModel)]="nombre"
+        name="nombre"
+        required
+      />
+
+      <input
+        type="password"
+        placeholder="Contraseña"
+        [(ngModel)]="contrasena"
+        name="contrasena"
+        required
+      />
+
+      <input
+        type="password"
+        placeholder="Repetir contraseña"
+        [(ngModel)]="repetirContrasena"
+        name="repetirContrasena"
+        required
+      />
+
+      <button type="submit" [disabled]="formulario.invalid">Registrarse</button>
+    </form>
+
+    @if (error) {
+      <p class="error-msg">{{ error }}</p>
+    }
+  </div>
+</div>
+
 

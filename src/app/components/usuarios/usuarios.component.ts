@@ -100,7 +100,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
           this.usuarios = list.map(u => ({
             ...u,
             online: this.onlineNombres.includes(u.nombre)
-          }));
+          }))
+          .sort((a, b) => Number(b.online) - Number(a.online));
           this.cargando = false;
           this.cdr.markForCheck();
           console.log('cargando puesto a false');
@@ -122,7 +123,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
           this.usuarios = this.usuarios.map(u => ({
             ...u,
             online: list.includes(u.nombre)
-          }));
+          }))
+          .sort((a, b) => Number(b.online) - Number(a.online));
           this.cdr.markForCheck();
         },
         error: (err) => console.error('Error en online$:', err)

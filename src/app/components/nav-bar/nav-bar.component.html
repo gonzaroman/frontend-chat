@@ -20,10 +20,10 @@
       <button (click)="logout()">Cerrar sesión</button>
     </div>
   } @else {
-    <div class="user-menu">
-      <a routerLink="/login">Login</a> |
-      <a routerLink="/registro">Registro</a>
-    </div>
+    <ul class="links">
+     <li> <a routerLink="/login">Login</a> |</li>
+     <li> <a routerLink="/registro">Registro</a></li>
+    </ul>
   }
 
   <!-- Enlaces móviles -->

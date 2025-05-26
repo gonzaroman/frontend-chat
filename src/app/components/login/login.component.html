@@ -1,4 +1,4 @@
-<h2>Iniciar sesión</h2>
+<!--<h2>Iniciar sesión</h2>
 
 <form (ngSubmit)="login()">
   <input type="text" placeholder="Nombre de usuario" [(ngModel)]="nombre" name="nombre" required><br><br>
@@ -9,3 +9,32 @@
 @if (error) {
   <p style="color:red">{{ error }}</p>
 }
+-->
+<div class="login-page">
+  <div class="login-card">
+    <h2>🔐 Iniciar sesión</h2>
+
+    <form (ngSubmit)="login()">
+      <input
+        type="text"
+        placeholder="Nombre de usuario"
+        [(ngModel)]="nombre"
+        name="nombre"
+        required
+      />
+      <input
+        type="password"
+        placeholder="Contraseña"
+        [(ngModel)]="contrasena"
+        name="contrasena"
+        required
+      />
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    @if (error) {
+      <p class="error-msg">{{ error }}</p>
+    }
+  </div>
+</div>
