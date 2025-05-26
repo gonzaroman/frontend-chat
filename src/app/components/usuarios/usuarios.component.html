@@ -15,9 +15,11 @@
           {{ u.nombre }}
         </a>
         @if (onlineNombres.includes(u.nombre)) {
-          <span class="online">● conectado</span>
+          
+          <span class="online">conectado</span>
         } @else {
-          <span class="offline">○ desconectado</span>
+          <span class="offline">desconectado</span>
+           
         }
       </li>
     }

@@ -24,7 +24,10 @@ export class NavBarComponent implements OnInit {
 ngOnInit() {
     // Solo en navegador
     if (isPlatformBrowser(this.platformId)) {
-      this.usuario = localStorage.getItem('usuario');
+     // this.usuario = localStorage.getItem('usuario');
+      this.auth.usuario$.subscribe((nombre) => {
+        this.usuario = nombre;
+      });
     }
   }
 
@@ -38,6 +41,7 @@ ngOnInit() {
   logout() {
     this.auth.logout();             // Limpia localStorage
     this.router.navigate(['/login']);
+
   }
 }
 

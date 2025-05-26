@@ -65,15 +65,8 @@ import { SocketService } from '../../services/socket.service';
   selector: 'app-usuarios',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: `
-    <div *ngIf="cargando">Cargando...</div>
-    <ul *ngIf="!cargando">
-      <li *ngFor="let usuario of usuarios; trackBy: trackByNombre">
-        {{ usuario.nombre }} - {{ usuario.online ? 'Online' : 'Offline' }}
-        <a *ngIf="usuario.nombre !== usuarioActual" [routerLink]="['/privado', generarIdPrivado(usuarioActual, usuario.nombre)]">Chat privado</a>
-      </li>
-    </ul>
-  `,
+ 
+  templateUrl: './usuarios.component.html',
   styleUrls: ['./usuarios.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
