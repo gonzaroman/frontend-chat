@@ -11,8 +11,8 @@ import { routes } from './app/app.routes';
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(HttpClientModule),        // ← importa el módulo HTTP
-   // provideRouter(routes, withHashLocation())    // ← si usas hash
-    provideRouter(routes)    // ← si usas hash
+  
+    provideRouter(routes)    // 
   ]
 })
 .catch(err => console.error(err));

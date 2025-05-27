@@ -1,22 +1,20 @@
+// src/app/guards/auth.guard.ts
+import { CanActivateFn, Router } from '@angular/router';
+import { inject } from '@angular/core';
 
-import { CanActivateFn } from '@angular/router';
-import { inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-import { Router } from '@angular/router';
-
-export const authGuard: CanActivateFn = () => {
-  const platformId = inject(PLATFORM_ID);
+export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
-  // Solo comprobamos localStorage si estamos en el navegador
-  if (isPlatformBrowser(platformId)) {
-    const usuario = localStorage.getItem('usuario');
-    if (!usuario) {
-      router.navigate(['/login']);
-      return false;
-    }
+  // Solo en cliente existe window.localStorage
+  let usuario: string | null = null;
+  if (typeof window !== 'undefined' && window.localStorage) {
+    usuario = window.localStorage.getItem('usuario')?.trim() || null;
   }
 
-  // En SSR o si hay usuario, permitimos
-  return true;
+  if (usuario) {
+    return true;
+  }
+
+  router.navigate(['/login']);
+  return false;
 };

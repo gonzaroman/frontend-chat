@@ -28,11 +28,22 @@ export class ChatSalaComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit() {
-    if (isPlatformBrowser(this.platformId)) {
+   /* if (isPlatformBrowser(this.platformId)) {
       this.usuarioActual = (localStorage.getItem('usuario') || '').trim();
-    }
+    }*/
+
+      if (typeof window !== 'undefined' && window.localStorage) {
+    this.usuarioActual = window.localStorage.getItem('usuario')?.trim() || '';
+  }
+
+
+
+
 
     this.socketService.emit('usuario conectado', this.usuarioActual);
+
+
+
 
     this.socketService
       .on<{ usuario: string; texto: string; fecha?: any }>('mensaje del chat')
