@@ -7,7 +7,7 @@ import { UsuariosComponent } from "../usuarios/usuarios.component";
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule, UsuariosComponent],
+  imports: [RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
