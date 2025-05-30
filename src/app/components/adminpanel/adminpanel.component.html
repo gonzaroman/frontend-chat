@@ -1,0 +1,21 @@
+<div class="admin-panel">
+  <h2>👤 Gestión de Usuarios</h2>
+  <ul class="admin-list">
+    @for (u of usuarios; track u) {
+      <li class="admin-card">
+        <span class="admin-nombre">{{ u.nombre }}</span>
+        <button class="btn-eliminar" (click)="eliminarUsuario(u.nombre)">Eliminar</button>
+      </li>
+    }
+  </ul>
+
+  <h2>💬 Gestión de Salas</h2>
+  <ul class="admin-list">
+    @for (s of salas; track s) {
+      <li class="admin-card">
+        <span class="admin-nombre">{{ s.nombre }}</span>
+        <button class="btn-eliminar" (click)="eliminarSala(s.id)">Eliminar</button>
+      </li>
+    }
+  </ul>
+</div>

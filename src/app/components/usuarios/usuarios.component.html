@@ -1,19 +1,32 @@
 <!-- src/app/components/usuarios/usuarios.component.html -->
-<h2>👥 Usuarios registrados</h2>
+<h2>👥 Usuarios registrados {{usuarioActual}}</h2>
 
 @if (cargando) {
   <p>Cargando…</p>
 } @else if (!cargando && usuarios.length) {
+
   <ul>
     @for ( u of usuarios; track u.nombre) {
-      <li>
+      
+     <!-- @if(usuarioActual!==u.nombre && u.nombre !="admin" ){-->
+       
+      @if( u.nombre !="admin" ) {
+      <li >
         <!-- Enlace al chat privado -->
+
+        @if(usuarioActual!==u.nombre && u.nombre !="admin" ){
         <a
           [routerLink]="['/privado', generarIdPrivado(usuarioActual, u.nombre)]"
           class="usuario-link"
         >
           {{ u.nombre }}
         </a>
+      }@else {
+       <span class="usuario-link">{{ u.nombre }}</span> 
+      }
+
+
+
         @if (onlineNombres.includes(u.nombre)) {
           
           <span class="online">conectado</span>
@@ -22,6 +35,8 @@
            
         }
       </li>
+    }
+
     }
   </ul>
 } @else {

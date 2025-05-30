@@ -11,6 +11,10 @@
     <li><a routerLink="/mis-salas">Tus salas</a></li>
     <li><a routerLink="/privados">Privados</a></li>
     <li><a routerLink="/usuarios">Usuarios</a></li>
+
+    @if( usuario === 'admin'){
+      <li><a routerLink="/admin">Administrar</a></li>
+    }
      
   </ul>
 
