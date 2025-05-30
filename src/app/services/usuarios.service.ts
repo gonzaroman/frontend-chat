@@ -22,12 +22,12 @@ export class UsuariosService {
     private socket: SocketService
   ) {
     this.socket.on<string[]>('lista usuarios')
-      .pipe(tap(list => console.log('Recibido lista usuarios desde socket:', list)))
+     // .pipe(tap(list => console.log('Recibido lista usuarios desde socket:', list)))
       .subscribe(list => this.onlineSubject.next(list));
   }
 
   obtenerUsuarios(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>('/api/usuarios')
-      .pipe(tap(users => console.log('Usuarios desde API:', users)));
+     // .pipe(tap(users => console.log('Usuarios desde API:', users)));
   }
 }

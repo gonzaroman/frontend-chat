@@ -5,6 +5,8 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SalaService } from '../../services/salas.service';
 
+import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-mis-salas',
   standalone: true,
@@ -30,11 +32,41 @@ export class MisSalasComponent implements OnInit {
     }
   }
 
-  eliminar(id: string) {
-    if (!confirm('¿Eliminar esta sala?')) return;
-    this.salaService.eliminarSala(id).subscribe(() => {
-      this.salas = this.salas.filter(s => s.id !== id);
-      alert('Sala eliminada');
+  eliminar(id: string, nombreSala: string) {
+
+    /* if (!confirm('¿Eliminar esta sala?')) return;
+     this.salaService.eliminarSala(id).subscribe(() => {
+       this.salas = this.salas.filter(s => s.id !== id);
+       alert('Sala eliminada');
+     });*/
+
+    Swal.fire({
+      title: "¿Quieres eliminar la Sala: <br>" + nombreSala + " ?",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Eliminar",
+      denyButtonText: `Cancelar`
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        Swal.fire("Sala '" + nombreSala + "' eliminada!", "", "success");
+
+        this.salaService.eliminarSala(id).subscribe(() => {
+          this.salas = this.salas.filter(s => s.id !== id);
+          // alert('Sala eliminada');
+        });
+
+
+      } else if (result.isDenied) {
+        //  Swal.fire("No se ha eliminado", "", "info");
+      }
     });
+
+
+
+
   }
+
+
+
 }
