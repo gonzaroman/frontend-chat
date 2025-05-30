@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { log } from 'console';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -27,4 +28,10 @@ obtenerMisSalas(usuario: string): Observable<any[]> {
   eliminarSala(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  actualizarSalaNombre(id: string, nombre: string) {
+    console.log("hola")
+  return this.http.put(`${this.apiUrl}/${id}`, { nombre });
+}
+
 }

@@ -10,7 +10,7 @@
     } @else {
       <ul class="mis-salas-list">
         @for (sala of salas; track sala.id) {
-          <li class="sala-card">
+         <!-- <li class="sala-card">
             <a [routerLink]="['/sala', sala.id]">
               {{ sala.nombre }}
             </a>
@@ -20,7 +20,23 @@
               >Eliminar
               🗑️
             </button>
-          </li>
+          </li>-->
+
+          <li class="sala-card">
+  @if (sala.editando) {
+    <input [(ngModel)]="sala.nuevoNombre" maxlength="50" />
+    <button (click)="guardar(sala)">Guardar💾</button>
+    <button (click)="cancelar(sala)">❌</button>
+  } @else {
+    <a [routerLink]="['/sala', sala.id]">{{ sala.nombre }}</a>
+    <button (click)="editar(sala)">✏️</button>
+    <button class="btn-eliminar" (click)="eliminar(sala.id, sala.nombre)">
+      Eliminar 🗑️
+    </button>
+  }
+</li>
+
+
         }
       </ul>
     }
