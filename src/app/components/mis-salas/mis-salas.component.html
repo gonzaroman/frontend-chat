@@ -10,17 +10,7 @@
     } @else {
       <ul class="mis-salas-list">
         @for (sala of salas; track sala.id) {
-         <!-- <li class="sala-card">
-            <a [routerLink]="['/sala', sala.id]">
-              {{ sala.nombre }}
-            </a>
-            <button 
-              class="btn-eliminar" 
-              (click)="eliminar(sala.id,  sala.nombre  )" 
-              >Eliminar
-              🗑️
-            </button>
-          </li>-->
+        
 
           <li class="sala-card">
   @if (sala.editando) {
