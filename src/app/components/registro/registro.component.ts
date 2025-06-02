@@ -1,5 +1,5 @@
 // Importamos los decoradores y dependencias necesarias
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';  // Para trabajar con [(ngModel)]
 import { AuthService } from '../../services/auth.service';  // Servicio de autenticación
 import { Router } from '@angular/router';  // Para redireccionar tras el registro
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';  // Para redireccionar tras el registr
   templateUrl: './registro.component.html',  // Ruta del HTML de la plantilla
   styleUrls: ['./registro.component.css']    // Ruta del CSS del componente
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit{
   // Variables para enlazar con el formulario
   nombre: string = '';
   contrasena: string = '';
@@ -20,6 +20,15 @@ export class RegistroComponent {
 
   // Inyectamos el servicio de autenticación y el router
   constructor(private authService: AuthService, private router: Router) {}
+
+// Comprobamos si ya hay sesión activa
+  ngOnInit(): void {
+    const usuario = localStorage.getItem('usuario');
+    if (usuario) {
+      this.router.navigate(['/']); // Redirige a inicio si ya hay usuario
+    }
+  }
+
 
   // Método que se ejecuta al enviar el formulario
   registrar() {
@@ -34,7 +43,8 @@ export class RegistroComponent {
       // Si todo va bien...
       next: () => {
         localStorage.setItem('usuario', this.nombre);  // Guardamos el usuario en localStorage
-        this.router.navigate(['/']);  // Redirigimos a la pantalla principal
+        window.location.reload();
+       // this.router.navigate(['/']);  // Redirigimos a la pantalla principal
       },
       // Si hay un error, lo mostramos
       error: (err) => {
