@@ -10,7 +10,7 @@ import { routes } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(HttpClientModule),        // ← importa el módulo HTTP
+    importProvidersFrom(HttpClientModule),        // importa el módulo HTTP
   
     provideRouter(routes)    // 
   ]

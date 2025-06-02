@@ -13,23 +13,24 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-  private router = inject(Router);
-  private auth   = inject(AuthService);
-   private platformId = inject(PLATFORM_ID);
+  private router = inject(Router);           // Inyección del servicio de navegación
+  private auth   = inject(AuthService);      // Servicio de autenticación
+  private platformId = inject(PLATFORM_ID);  // Detecta si se ejecuta en navegador o servidor
 
-  usuario: string | null = null;
+  usuario: string | null = null;             // Nombre del usuario actual
+  mobileMenuOpen = false;                    // Estado del menú en vista móvil
 
-  mobileMenuOpen = false;
 
-ngOnInit() {
-    // Solo en navegador
+  ngOnInit() {
+    // Solo ejecutamos si estamos en el navegador (evita errores en SSR)
     if (isPlatformBrowser(this.platformId)) {
-     // this.usuario = localStorage.getItem('usuario');
+      // Nos suscribimos al observable del usuario en el servicio Auth
       this.auth.usuario$.subscribe((nombre) => {
-        this.usuario = nombre;
+        this.usuario = nombre;  // Actualiza la variable al loguearse o hacer logout
       });
     }
   }
+
 
   toggleMobileMenu() {
     this.mobileMenuOpen = !this.mobileMenuOpen;
