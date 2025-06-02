@@ -1,5 +1,5 @@
 <!-- src/app/components/usuarios/usuarios.component.html -->
-<h2>👥 Usuarios registrados {{usuarioActual}}</h2>
+<h2>👥 Usuarios registrados </h2>
 
 @if (cargando) {
   <p>Cargando…</p>
@@ -22,7 +22,7 @@
           {{ u.nombre }}
         </a>
       }@else {
-       <span class="usuario-link">{{ u.nombre }}</span> 
+       <span class="usuario-link">{{ u.nombre }} (Tú)</span> 
       }
 
 
